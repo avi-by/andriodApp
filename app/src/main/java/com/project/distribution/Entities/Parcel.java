@@ -5,8 +5,6 @@ import android.provider.ContactsContract;
 
 import java.util.Date;
 
-import andriod.location.Location;
-
 public class Parcel {
 
     private ParcelKind p;
