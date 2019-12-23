@@ -1,4 +1,9 @@
 <resources>
+    <string-array name="parcelType">
+        <item>envelope</item>
+        <item>littel parcel</item>
+        <item>big parcel</item>
+    </string-array>
     <string name="app_name">Distribution</string>
     <string name="action_settings">Settings</string>
 </resources>

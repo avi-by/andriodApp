@@ -7,18 +7,42 @@ import java.util.Date;
 
 public class Parcel {
 
+    private static int idnum=1;
+    private int id;
     private ParcelKind p;
     private boolean isFragile;
     private Weight w;
     private Location location;
     private String name;
     private Address address;
-    private Date sendDate;
-    private Date incomeDate;
+
     private ContactsContract.CommonDataKinds.Phone phone;
     private ContactsContract.CommonDataKinds.Email email;
     private ParcelStatus parcelStatus;
     private String deliverName;
+
+    public Parcel(ParcelKind p, boolean isFragile, Weight w, Location location, String name, Address address,
+                    ContactsContract.CommonDataKinds.Phone phone,
+                  ContactsContract.CommonDataKinds.Email email, ParcelStatus parcelStatus, String deliverName) {
+        id=idnum;
+        idnum+=1;
+        this.p = p;
+        this.isFragile = isFragile;
+        this.w = w;
+        this.location = location;
+        this.name = name;
+        this.address = address;
+
+        this.phone = phone;
+        this.email = email;
+        this.parcelStatus = parcelStatus;
+        this.deliverName = deliverName;
+    }
+
+
+    public int getId() {
+        return id;
+    }
 
     public ParcelKind getP() {
         return p;
@@ -66,22 +90,6 @@ public class Parcel {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Date getSendDate() {
-        return sendDate;
-    }
-
-    public void setSendDate(Date sendDate) {
-        this.sendDate = sendDate;
-    }
-
-    public Date getIncomeDate() {
-        return incomeDate;
-    }
-
-    public void setIncomeDate(Date incomeDate) {
-        this.incomeDate = incomeDate;
     }
 
     public ContactsContract.CommonDataKinds.Phone getPhone() {
