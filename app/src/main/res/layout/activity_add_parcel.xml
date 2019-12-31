@@ -18,8 +18,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="enter the new parcel details" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name:"/>
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -42,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="is fragile? "/>
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/fragile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -57,16 +72,63 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="whight: "/>
+                android:layout_height="wrap_content"
+                android:text="weight: "/>
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/weight"
                 android:layout_width="500px"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberDecimal" />
+
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="address:"/>
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="phone:"/>
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="email:"/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="add"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

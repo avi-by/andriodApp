@@ -15,7 +15,6 @@ public class Parcel {
     private Location location;
     private String name;
     private Address address;
-
     private ContactsContract.CommonDataKinds.Phone phone;
     private ContactsContract.CommonDataKinds.Email email;
     private ParcelStatus parcelStatus;
@@ -124,15 +123,15 @@ public class Parcel {
         this.deliverName = deliverName;
     }
 
-    enum Weight {
+    public enum Weight {
         LESS_THEN_500_G,LESS_THEN_KG,LESS_THEN_5_KG,LESS_THEN_20_KG;
     }
 
-    enum ParcelKind {
+    public enum ParcelKind {
         ENVELOPE,LITTEL_PARCEL,BIG_PARCEL;
     }
 
-    enum ParcelStatus {
+    public enum ParcelStatus {
         WAIT,HAVE_DELIVER,ON_WAY,ACCEPT;
     }
 }
