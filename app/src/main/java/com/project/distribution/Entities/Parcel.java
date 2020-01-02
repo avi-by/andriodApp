@@ -4,6 +4,7 @@ import android.location.Location;
 import android.provider.ContactsContract;
 
 import java.util.Date;
+import java.util.WeakHashMap;
 
 public class Parcel {
 
@@ -14,28 +15,48 @@ public class Parcel {
     private Weight w;
     private Location location;
     private String name;
-    private Address address;
-    private ContactsContract.CommonDataKinds.Phone phone;
-    private ContactsContract.CommonDataKinds.Email email;
+    private String address;
+    private String phone;
+    private String email;
     private ParcelStatus parcelStatus;
-    private String deliverName;
 
-    public Parcel(ParcelKind p, boolean isFragile, Weight w, Location location, String name, Address address,
-                    ContactsContract.CommonDataKinds.Phone phone,
-                  ContactsContract.CommonDataKinds.Email email, ParcelStatus parcelStatus, String deliverName) {
+    public Parcel(String pkind, boolean isFragile, float w, Location location, String name, String address,
+                  String phone,
+                  String email, ParcelStatus parcelStatus) {
         id=idnum;
         idnum+=1;
-        this.p = p;
+
         this.isFragile = isFragile;
-        this.w = w;
+        if (w<0.5)
+            this.w=Weight.LESS_THEN_500_G;
+        if (w<1&&w>=0.5)
+            this.w= Weight.LESS_THEN_KG;
+        if (w<5&&w>=1)
+            this.w=Weight.LESS_THEN_5_KG;
+        if (w>=5)
+            this.w=Weight.LESS_THEN_20_KG;
+
         this.location = location;
         this.name = name;
         this.address = address;
 
+
+        switch (pkind){
+            case "envelope":
+                p= Parcel.ParcelKind.ENVELOPE;
+                break;
+            case "littel parcel":
+                p=Parcel.ParcelKind.LITTEL_PARCEL;
+                break;
+            case "big parcel":
+                p=Parcel.ParcelKind.BIG_PARCEL;
+                break;
+        }
+
         this.phone = phone;
         this.email = email;
         this.parcelStatus = parcelStatus;
-        this.deliverName = deliverName;
+
     }
 
 
@@ -83,27 +104,27 @@ public class Parcel {
         this.name = name;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public ContactsContract.CommonDataKinds.Phone getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(ContactsContract.CommonDataKinds.Phone phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public ContactsContract.CommonDataKinds.Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(ContactsContract.CommonDataKinds.Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -115,13 +136,8 @@ public class Parcel {
         this.parcelStatus = parcelStatus;
     }
 
-    public String getDeliverName() {
-        return deliverName;
-    }
 
-    public void setDeliverName(String deliverName) {
-        this.deliverName = deliverName;
-    }
+
 
     public enum Weight {
         LESS_THEN_500_G,LESS_THEN_KG,LESS_THEN_5_KG,LESS_THEN_20_KG;

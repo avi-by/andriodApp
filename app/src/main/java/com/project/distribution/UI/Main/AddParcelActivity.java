@@ -2,6 +2,7 @@ package com.project.distribution.UI.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,26 +26,20 @@ public class AddParcelActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         final CheckBox fragile =  (CheckBox) findViewById(R.id.fragile);
+        final EditText weight=(EditText) findViewById(R.id.weight);
         EditText phone = (EditText) findViewById(R.id.phone);
         Button button = (Button) findViewById(R.id.add_button);
+        final EditText email = (EditText) findViewById(R.id.email);
+        final EditText name = (EditText) findViewById(R.id.name);
+        final EditText address = (EditText) findViewById(R.id.address);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: somthing more flex for the the enums
-                //TODO check the input of the add parcell
-                Parcel.ParcelKind parcelKind;
-                switch ((String)spinner.getSelectedItem()){
-                    case "envelope":
-                        parcelKind= Parcel.ParcelKind.ENVELOPE;
-                        break;
-                    case "littel parcel":
-                        parcelKind=Parcel.ParcelKind.LITTEL_PARCEL;
-                        break;
-                    case "big parcel":
-                        parcelKind=Parcel.ParcelKind.BIG_PARCEL;
-                        break;
-                }
-                Parcel p = new Parcel(parcelKind,fragile.isChecked())
+                //TODO check the input of the add parcel
+
+                Parcel p = new Parcel((String)spinner.getSelectedItem(),fragile.isChecked(),Float.parseFloat(weight.getText().toString()), Location,
+                        name.getText().toString(),address.getText().toString(),email.getText().toString());
             }
         });
     }
