@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.project.distribution.Data.DataSource;
 import com.project.distribution.Entities.Parcel;
 import com.project.distribution.R;
 
@@ -27,7 +30,7 @@ public class AddParcelActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
         final CheckBox fragile =  (CheckBox) findViewById(R.id.fragile);
         final EditText weight=(EditText) findViewById(R.id.weight);
-        EditText phone = (EditText) findViewById(R.id.phone);
+        final EditText phone = (EditText) findViewById(R.id.phone);
         Button button = (Button) findViewById(R.id.add_button);
         final EditText email = (EditText) findViewById(R.id.email);
         final EditText name = (EditText) findViewById(R.id.name);
@@ -37,9 +40,20 @@ public class AddParcelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO check the input of the add parcel
+                Location l =new Location("");
+                l.setLatitude(31.765739);
+                l.setLongitude(35.191110);
+                try {
+                    Parcel p = new Parcel((String)spinner.getSelectedItem(),fragile.isChecked(),Float.parseFloat(weight.getText().toString()), l,
+                            name.getText().toString(),address.getText().toString(),phone.getText().toString(),email.getText().toString(), Parcel.ParcelStatus.WAIT);
+                    DataSource.addParcel(p);
+                    Snackbar.make(v, R.string.add_parcel, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }catch (Exception e){
+                    Snackbar.make(v, R.string.error_add_parcel, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
 
-                Parcel p = new Parcel((String)spinner.getSelectedItem(),fragile.isChecked(),Float.parseFloat(weight.getText().toString()), Location,
-                        name.getText().toString(),address.getText().toString(),email.getText().toString());
             }
         });
     }
