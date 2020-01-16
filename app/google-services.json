@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "57953439728",
+    "firebase_url": "https://parceldb-5392c.firebaseio.com",
+    "project_id": "parceldb-5392c",
+    "storage_bucket": "parceldb-5392c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57953439728:android:154451d944ba96b4fa5735",
+        "android_client_info": {
+          "package_name": "com.project.distribution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57953439728-0b80alm5qietoqtoqoir20vbd04mn5ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtOWPscLZqoPdkMKH6uk4mWW4xWgMiOzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57953439728-0b80alm5qietoqtoqoir20vbd04mn5ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ package com.project.distribution.UI.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,8 @@ public class AddParcelActivity extends AppCompatActivity {
                     DataSource.addParcel(p);
                     Snackbar.make(v, R.string.add_parcel, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    Intent myIntent = new Intent(AddParcelActivity.this , MainActivity.class);
+                    startActivity(myIntent);
                 }catch (Exception e){
                     Snackbar.make(v, R.string.error_add_parcel, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();

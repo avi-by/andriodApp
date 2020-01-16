@@ -1,16 +1,13 @@
 package com.project.distribution.Entities;
-import android.location.Address;
 import android.location.Location;
-import android.provider.ContactsContract;
 
-import java.util.Date;
-import java.util.WeakHashMap;
+import com.google.firebase.database.Exclude;
 
 public class Parcel {
 
     private static int idnum=1;
     private int id;
-    private ParcelKind p;
+    private ParcelKind parcelKind;
     private boolean isFragile;
     private Weight w;
     private Location location;
@@ -19,6 +16,10 @@ public class Parcel {
     private String phone;
     private String email;
     private ParcelStatus parcelStatus;
+
+    public Parcel(){
+        location = new Location("");
+    }
 
     public Parcel(String pkind, boolean isFragile, float w, Location location, String name, String address,
                   String phone,
@@ -43,13 +44,13 @@ public class Parcel {
 
         switch (pkind){
             case "envelope":
-                p= Parcel.ParcelKind.ENVELOPE;
+                parcelKind = Parcel.ParcelKind.ENVELOPE;
                 break;
             case "littel parcel":
-                p=Parcel.ParcelKind.LITTEL_PARCEL;
+                parcelKind =Parcel.ParcelKind.LITTEL_PARCEL;
                 break;
             case "big parcel":
-                p=Parcel.ParcelKind.BIG_PARCEL;
+                parcelKind =Parcel.ParcelKind.BIG_PARCEL;
                 break;
         }
 
@@ -64,12 +65,12 @@ public class Parcel {
         return id;
     }
 
-    public ParcelKind getP() {
-        return p;
+    public ParcelKind getParcelKind() {
+        return parcelKind;
     }
 
-    public void setP(ParcelKind p) {
-        this.p = p;
+    public void setParcelKind(ParcelKind parcelKind) {
+        this.parcelKind = parcelKind;
     }
 
     public boolean isFragile() {
@@ -88,8 +89,25 @@ public class Parcel {
         this.w = w;
     }
 
+    @Exclude
     public Location getLocation() {
         return location;
+    }
+
+    public Double getLatitude(){
+        return location.getLatitude();
+    }
+
+    public Double getLongitude(){
+        return location.getLongitude();
+    }
+
+    public void setLatitude(double latitude){
+        location.setLatitude(latitude);
+    }
+
+    public void setLongitude(double longitude){
+        location.setLongitude(longitude);
     }
 
     public void setLocation(Location location) {
